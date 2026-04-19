@@ -11,7 +11,7 @@ RAG Grid operator copilot system.
 
 ### 1. No Direct SCADA / Hardware Connection
 
-**This software does NOT connect to any industrial control system, SCADA, DCS, RTU, or field
+**This software does NOT connect to any industrial control system, SCADA, DCS, RTU, or field 
 device.** It reads only static telemetry files and outputs a human-readable "command plan" JSON.
 Any integration with live systems must be performed by qualified personnel following site change-
 management procedures and must include additional safety interlocks outside this software.
