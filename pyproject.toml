@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-grid"
+version = "0.1.0"
+description = "RAG-powered operator copilot for power-grid automation"
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+dependencies = [
+    "openai>=1.0",
+    "numpy>=1.26",
+    "pydantic>=2.0",
+    "scikit-learn>=1.3",
+    "pandas>=2.0",
+    "rich>=13.0",
+    "typer>=0.9",
+]
+
+[project.optional-dependencies]
+faiss = ["faiss-cpu>=1.7"]
+dev = ["pytest>=7.0", "pytest-cov>=4.0"]
+
+[project.scripts]
+rag-grid = "rag_grid.main:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

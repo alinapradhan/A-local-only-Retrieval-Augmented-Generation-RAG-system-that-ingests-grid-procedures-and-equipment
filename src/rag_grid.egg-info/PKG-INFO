@@ -1,3 +1,23 @@
+Metadata-Version: 2.4
+Name: rag-grid
+Version: 0.1.0
+Summary: RAG-powered operator copilot for power-grid automation
+License: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: openai>=1.0
+Requires-Dist: numpy>=1.26
+Requires-Dist: pydantic>=2.0
+Requires-Dist: scikit-learn>=1.3
+Requires-Dist: pandas>=2.0
+Requires-Dist: rich>=13.0
+Requires-Dist: typer>=0.9
+Provides-Extra: faiss
+Requires-Dist: faiss-cpu>=1.7; extra == "faiss"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0; extra == "dev"
+
 # RAG Grid — Operator Copilot for Power-Grid Automation
 
 A local-only, Retrieval-Augmented Generation (RAG) system that ingests grid procedures and equipment constraints, then uses a multi-agent pipeline to recommend safe power-grid control actions.

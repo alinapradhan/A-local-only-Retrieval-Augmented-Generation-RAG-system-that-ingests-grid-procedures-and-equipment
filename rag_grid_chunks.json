@@ -1,0 +1,284 @@
+[
+  {
+    "chunk_id": "99e3fc44",
+    "source": "equipment_limits.md",
+    "section": "Generator G1 \u2014 Large Thermal Unit (Coal/Gas Steam)",
+    "text": "- **Rated capacity**: 300 MW - **Minimum stable generation**: 90 MW (30% of rated) - **Maximum continuous rating (MCR)**: 300 MW - **Short-term emergency rating**: 315 MW (5% overload, max 30 min) - **Ramp rate (increase)**: 20 MW/minute - **Ramp rate (decrease)**: 25 MW/minute - **Minimum up-time**: 4 hours - **Minimum down-time**: 6 hours - **Reactive capability**: +150 / -80 MVAr - **Governor droop**: 4% - **Governor dead-band**: \u00b10.036 Hz"
+  },
+  {
+    "chunk_id": "077a6383",
+    "source": "equipment_limits.md",
+    "section": "Generator G2 \u2014 Combined Cycle Gas Turbine (CCGT)",
+    "text": "- **Rated capacity**: 250 MW - **Minimum stable generation**: 100 MW (40% of rated) - **Maximum continuous rating**: 250 MW - **Short-term emergency rating**: 262 MW (max 15 min) - **Ramp rate (increase)**: 15 MW/minute - **Ramp rate (decrease)**: 20 MW/minute - **Minimum up-time**: 2 hours - **Minimum down-time**: 2 hours - **Reactive capability**: +120 / -60 MVAr - **Governor droop**: 5%"
+  },
+  {
+    "chunk_id": "c3ec7ca6",
+    "source": "equipment_limits.md",
+    "section": "Generator G3 \u2014 Renewable Integration Unit (Wind/Solar with Storage)",
+    "text": "- **Rated capacity**: 200 MW - **Minimum stable generation**: 0 MW (can curtail to zero) - **Maximum continuous rating**: 200 MW (weather-dependent) - **Ramp rate (increase)**: 50 MW/minute (limited by converter controls) - **Ramp rate (decrease)**: 50 MW/minute - **Reactive capability**: +80 / -50 MVAr (inverter-based, full range available) - **Governor/synthetic inertia**: Virtual inertia mode available; activate via SCADA if frequency < 59.8 Hz"
+  },
+  {
+    "chunk_id": "acc02606",
+    "source": "equipment_limits.md",
+    "section": "Summer Ratings (June\u2013September)",
+    "text": "| Line ID | From Bus | To Bus | Voltage (kV) | Normal Rating (MVA) | Emergency Rating (MVA) | |---------|----------|--------|--------------|---------------------|------------------------| | L1-L2 | BUS1 | BUS2 | 345 | 800 | 880 | | L2-L3 | BUS2 | BUS3 | 345 | 700 | 770 | | L3-L4 | BUS3 | BUS4 | 230 | 400 | 440 | | L1-L4 | BUS1 | BUS4 | 345 | 900 | 990 |"
+  },
+  {
+    "chunk_id": "7c39d3da",
+    "source": "equipment_limits.md",
+    "section": "Winter Ratings (October\u2013May)",
+    "text": "| Line ID | Normal Rating (MVA) | Emergency Rating (MVA) | |---------|---------------------|------------------------| | L1-L2 | 880 | 968 | | L2-L3 | 770 | 847 | | L3-L4 | 440 | 484 | | L1-L4 | 990 | 1089 |"
+  },
+  {
+    "chunk_id": "9bfa71e2",
+    "source": "equipment_limits.md",
+    "section": "Line Loading Alert Levels",
+    "text": "- **Pre-alert**: > 80% of normal thermal rating \u2014 inform system operator. - **Alert**: > 90% of normal thermal rating \u2014 operator must identify and activate remedial action. - **Critical**: > 100% of normal thermal rating \u2014 immediate action required; redispatch or topology change within 15 minutes. - **Emergency**: > 110% of normal thermal rating \u2014 automatic protection may trip line within minutes."
+  },
+  {
+    "chunk_id": "590d2c1c",
+    "source": "equipment_limits.md",
+    "section": "Thermal Limit Assumptions",
+    "text": "Ratings assume: - Ambient temperature: 35\u00b0C (summer) / 15\u00b0C (winter) - Solar radiation: 1000 W/m\u00b2 (summer) / 200 W/m\u00b2 (winter) - Wind speed: 0.6 m/s (conservative) - Conductor type: ACSR Drake 477 kcmil (or equivalent)"
+  },
+  {
+    "chunk_id": "21a06097",
+    "source": "equipment_limits.md",
+    "section": "T1 \u2014 345/138 kV Auto-Transformer (BUS1\u2013BUS3)",
+    "text": "- **MVA rating**: 500 MVA (normal) / 550 MVA (emergency, max 4 hours) - **Tap range**: \u00b18 steps of \u00b11.25% each (\u00b110% total) - **LTC dead-band**: \u00b10.5% voltage - **Cooling**: OFAF; emergency OFAF cooling activates at 90% load"
+  },
+  {
+    "chunk_id": "478b3e4d",
+    "source": "equipment_limits.md",
+    "section": "T2 \u2014 138/69 kV Transformer (BUS3\u2013BUS4)",
+    "text": "- **MVA rating**: 200 MVA (normal) / 220 MVA (emergency) - **Tap range**: \u00b14 steps of \u00b12.5% each - **LTC dead-band**: \u00b10.625%"
+  },
+  {
+    "chunk_id": "04a2c4bb",
+    "source": "equipment_limits.md",
+    "section": "Under-Frequency Load Shedding (UFLS) Scheme",
+    "text": "| Stage | Frequency Threshold | Load to Shed | |-------|---------------------|--------------| | 1 | 59.3 Hz | 10% of total load | | 2 | 59.0 Hz | 15% of total load | | 3 | 58.7 Hz | 20% of total load | | 4 | 58.4 Hz | 20% of total load |"
+  },
+  {
+    "chunk_id": "7c19f9ed",
+    "source": "equipment_limits.md",
+    "section": "Over-Frequency Protection",
+    "text": "- Generator trip at 60.6 Hz sustained for > 0.5 seconds. - Second generator trip at 61.0 Hz sustained for > 0.1 seconds."
+  },
+  {
+    "chunk_id": "dd016a1b",
+    "source": "equipment_limits.md",
+    "section": "Distance Protection (Transmission Lines)",
+    "text": "- Zone 1: 80% of line impedance, instantaneous (< 20 ms). - Zone 2: 120% of line impedance, time-delayed 0.3 s. - Zone 3: 150% of line impedance, time-delayed 0.6 s."
+  },
+  {
+    "chunk_id": "8b18bcb4",
+    "source": "equipment_limits.md",
+    "section": "Reserve Requirements",
+    "text": "- **Primary (governor response)**: \u2265 50 MW, must respond within 10 seconds. - **Secondary (AGC)**: \u2265 100 MW, must respond within 10 minutes. - **Tertiary (manual dispatch)**: \u2265 150 MW, must be available within 30 minutes."
+  },
+  {
+    "chunk_id": "bc85be48",
+    "source": "equipment_limits.md",
+    "section": "Reserve Sources",
+    "text": "- G1: can provide up to 20 MW spinning reserve above current output. - G2: can provide up to 30 MW spinning reserve above current output. - G3 (when available): can provide up to 50 MW through inverter headroom. - Demand response: up to 40 MW available with 5-minute activation."
+  },
+  {
+    "chunk_id": "9d2c95ad",
+    "source": "grid_policies.md",
+    "section": "Normal Operating Band",
+    "text": "The system frequency must be maintained within \u00b10.1 Hz of the nominal 60.0 Hz (i.e., between 59.9 Hz and 60.1 Hz) during normal operations. Sustained deviations outside this band require immediate corrective action by the system operator."
+  },
+  {
+    "chunk_id": "d4c5fa28",
+    "source": "grid_policies.md",
+    "section": "Alert Thresholds",
+    "text": "- **Under-frequency alert**: Frequency < 59.7 Hz \u2014 operator must increase generation or reduce load. - **Over-frequency alert**: Frequency > 60.3 Hz \u2014 operator must curtail generation or increase load. - **Emergency under-frequency**: Frequency < 59.5 Hz \u2014 automatic under-frequency load shedding (UFLS) may activate. - **Emergency over-frequency**: Frequency > 60.5 Hz \u2014 automatic generation trip protection may activate."
+  },
+  {
+    "chunk_id": "c9afc162",
+    "source": "grid_policies.md",
+    "section": "Automatic Governor Response",
+    "text": "All online generators must have active governor control enabled. The governor dead-band must not exceed \u00b10.036 Hz. Generator output should respond to frequency deviations at a droop of 4\u20135%."
+  },
+  {
+    "chunk_id": "5f021682",
+    "source": "grid_policies.md",
+    "section": "Frequency Restoration",
+    "text": "Following a frequency excursion, AGC (Automatic Generation Control) must restore frequency to within the normal band within 10 minutes. If AGC cannot restore frequency within 5 minutes, operators must manually dispatch additional generation or initiate emergency load shedding."
+  },
+  {
+    "chunk_id": "9aebd13b",
+    "source": "grid_policies.md",
+    "section": "Operating Voltage Range",
+    "text": "All transmission buses must operate within \u00b15% of nominal voltage (0.95\u20131.05 pu) under normal conditions and within \u00b110% (0.90\u20131.10 pu) under emergency N-1 contingency conditions."
+  },
+  {
+    "chunk_id": "7b9a2fb7",
+    "source": "grid_policies.md",
+    "section": "Reactive Power Management",
+    "text": "- Operators must ensure sufficient reactive reserve is maintained at each voltage control area. - Capacitor banks may be switched in when bus voltage drops below 0.97 pu. - Reactors must be switched in when bus voltage rises above 1.03 pu. - Generator reactive power dispatch must remain within capability curve limits at all times."
+  },
+  {
+    "chunk_id": "7e34a3cd",
+    "source": "grid_policies.md",
+    "section": "Voltage Emergency Actions",
+    "text": "If a transmission bus voltage falls below 0.92 pu: 1. Immediately switch in available capacitor banks. 2. Increase generator reactive output (Q-injection). 3. If voltage does not recover within 2 minutes, consider controlled load shedding."
+  },
+  {
+    "chunk_id": "99348753",
+    "source": "grid_policies.md",
+    "section": "Merit Order Dispatch",
+    "text": "Generators must be dispatched in economic merit order, subject to: - Security constraints (line thermal limits, voltage limits, stability limits). - Generator ramp rate limitations. - Minimum generation requirements (must-run units). - Environmental dispatch constraints."
+  },
+  {
+    "chunk_id": "cc4da414",
+    "source": "grid_policies.md",
+    "section": "Ramp Rate Limits",
+    "text": "No generator setpoint change should exceed the unit's maximum ramp rate: - Thermal units: 10\u201330 MW/minute (see equipment_limits.md for per-unit values). - Combined cycle: 5\u201315 MW/minute. - Hydro units: up to 50 MW/minute. - A single 5-minute dispatch instruction must not request more than 50 MW change per unit without prior confirmation of unit flexibility."
+  },
+  {
+    "chunk_id": "1a92dfe6",
+    "source": "grid_policies.md",
+    "section": "Spinning Reserve Requirement",
+    "text": "At all times, online spinning reserve must be \u2265 5% of total demand (and no less than 50 MW). If spinning reserve falls below this threshold, operators must immediately: 1. Dispatch additional fast-response generation. 2. Pre-position interruptible load contracts for activation. 3. Alert neighboring control areas for potential emergency assistance."
+  },
+  {
+    "chunk_id": "7d5f9056",
+    "source": "grid_policies.md",
+    "section": "Voluntary Load Reduction",
+    "text": "Before any involuntary shedding, operators must: 1. Request voluntary load reduction from large industrial customers (demand response). 2. Activate interruptible service contracts. 3. Issue emergency energy conservation advisories."
+  },
+  {
+    "chunk_id": "e639692b",
+    "source": "grid_policies.md",
+    "section": "Involuntary Load Shedding (Emergency)",
+    "text": "Load shedding blocks must be rotated equitably. Maximum shed per 5-minute interval is 100 MW (approximately 10% of peak demand) to avoid cascade collapse. Priority loads (hospitals, emergency services, water treatment) are exempt from shedding unless authorized by senior management."
+  },
+  {
+    "chunk_id": "c7485811",
+    "source": "grid_policies.md",
+    "section": "Post-Shedding Restoration",
+    "text": "Load must be restored in reverse shedding order as soon as frequency returns above 59.7 Hz and generation capacity is confirmed stable. Restoration rate: no more than 50 MW per 5-minute interval."
+  },
+  {
+    "chunk_id": "0250d234",
+    "source": "grid_policies.md",
+    "section": "Steady-State Security",
+    "text": "The system must remain within thermal, voltage, and stability limits following any single contingency (N-1). Operators must run security assessment software at least every 30 minutes and after any significant topology change."
+  },
+  {
+    "chunk_id": "1f63b695",
+    "source": "grid_policies.md",
+    "section": "Line Thermal Limits",
+    "text": "- Normal operating limit (NOL): 100% of seasonal thermal rating. - Emergency operating limit (EOL): 110% of seasonal thermal rating for up to 30 minutes. - Lines loaded above 90% of their thermal rating must be treated as pre-contingency alerts."
+  },
+  {
+    "chunk_id": "de1b342d",
+    "source": "grid_policies.md",
+    "section": "Contingency Response Time",
+    "text": "After an N-1 contingency, operators have: - 30 minutes to restore to N-1 secure state. - 10 minutes for critical 345 kV and above lines."
+  },
+  {
+    "chunk_id": "7aea54db",
+    "source": "operator_playbook.md",
+    "section": "Overview",
+    "text": "This playbook provides step-by-step procedures for common operating scenarios. All actions must be logged in the Energy Management System (EMS). When in doubt, consult the senior system operator or escalate to the control room supervisor. > **SAFETY NOTICE**: This playbook is for guidance only. Field conditions may require deviation > from standard procedures. Always prioritise personnel and equipment safety over system economics."
+  },
+  {
+    "chunk_id": "0d7b721b",
+    "source": "operator_playbook.md",
+    "section": "Normal Dispatch (Economic Merit Order)",
+    "text": "1. Review load forecast for the next dispatch interval (typically 5 minutes). 2. Check spinning reserve position against requirements in equipment_limits.md. 3. If reserve is adequate, dispatch in economic merit order: G3 (renewable, zero marginal cost) \u2192 G2 (CCGT) \u2192 G1 (thermal). 4. Submit dispatch instructions to generators via AGC or manual phone confirmation. 5. Monitor generator response for 2 minutes; if output has not moved as instructed, call the plant operator. 6. Log all dispatch changes in the EMS with timestamp, reason, and target setpoint."
+  },
+  {
+    "chunk_id": "775231b6",
+    "source": "operator_playbook.md",
+    "section": "Manual Dispatch Override",
+    "text": "Used when AGC is unavailable or security constraints require manual control: 1. Notify the supervisor that manual dispatch is active. 2. Calculate required generation change: \u0394P = P_load - P_gen + Reserve_target. 3. Prioritise fast-responding units (G2, G3) for frequency control. 4. Do not exceed ramp limits listed in equipment_limits.md. 5. Restore AGC as soon as conditions permit."
+  },
+  {
+    "chunk_id": "a8df816c",
+    "source": "operator_playbook.md",
+    "section": "Procedure FR-01: Frequency Below 59.7 Hz",
+    "text": "**Trigger**: Frequency < 59.7 Hz sustained for > 30 seconds. **Steps**: 1. Announce on EMS intercom: \"Under-frequency event \u2014 all operators stand by.\" 2. Identify generation deficit: \u0394P = (60.0 - f) \u00d7 D, where D \u2248 200 MW/Hz. 3. Dispatch available spinning reserve immediately: - Request G2 to increase output to maximum continuous rating. - Request G3 to activate synthetic inertia mode (if available). - Request G1 to increase output at maximum ramp rate. 4. If frequency < 59.5 Hz, prepare for UFLS activation and notify distribution operators. 5. Document event in EMS; submit Event Report within 1 hour."
+  },
+  {
+    "chunk_id": "ced27c45",
+    "source": "operator_playbook.md",
+    "section": "Procedure FR-02: Frequency Above 60.3 Hz",
+    "text": "**Trigger**: Frequency > 60.3 Hz sustained for > 30 seconds. **Steps**: 1. Identify generation surplus: \u0394P = (f - 60.0) \u00d7 D. 2. Curtail cheapest online generation first (economic merit order reverse): - Curtail G1 toward minimum stable generation (90 MW). - Curtail G2 if G1 curtailment is insufficient. - Curtail G3 as a last resort (renewable energy loss). 3. If frequency > 60.5 Hz, activate interruptible load contracts to absorb surplus. 4. If automatic over-frequency protection trips a generator, assess N-1 security. 5. Document event in EMS."
+  },
+  {
+    "chunk_id": "ac736cc3",
+    "source": "operator_playbook.md",
+    "section": "Procedure FR-03: Large Frequency Disturbance (> 0.5 Hz deviation)",
+    "text": "**Trigger**: Frequency falls below 59.5 Hz or rises above 60.5 Hz. **Steps**: 1. Declare \"Grid Emergency\" to all operators and supervisor. 2. Execute FR-01 or FR-02 simultaneously. 3. Monitor UFLS relay status; co-ordinate with distribution operators. 4. Contact neighbouring control areas for emergency energy exchange. 5. Post-event: preserve all EMS logs and relay records; initiate formal incident investigation."
+  },
+  {
+    "chunk_id": "604939bc",
+    "source": "operator_playbook.md",
+    "section": "Procedure VS-01: Low Voltage (< 0.97 pu)",
+    "text": "**Trigger**: Any transmission bus voltage < 0.97 pu for > 1 minute. **Steps**: 1. Switch in available capacitor banks at or near the affected bus. 2. Increase reactive output (MVAr) from generators in the affected voltage zone. 3. If voltage does not recover to > 0.98 pu within 2 minutes, consider transformer tap adjustment. 4. If voltage < 0.94 pu, initiate controlled load shedding in the affected area. 5. Log all equipment operations with timestamps."
+  },
+  {
+    "chunk_id": "8da8ea75",
+    "source": "operator_playbook.md",
+    "section": "Procedure VS-02: High Voltage (> 1.03 pu)",
+    "text": "**Trigger**: Any transmission bus voltage > 1.03 pu for > 1 minute. **Steps**: 1. Switch in available reactors at or near the affected bus. 2. Reduce reactive output from generators (absorb MVAr). 3. If voltage > 1.05 pu, check for unnecessary capacitor bank switching. 4. If voltage > 1.07 pu, reduce generation in the affected zone or open lightly loaded lines."
+  },
+  {
+    "chunk_id": "917c206d",
+    "source": "operator_playbook.md",
+    "section": "Procedure LO-01: Line Loading > 90% (Pre-Alert)",
+    "text": "**Trigger**: Any line loading > 90% of thermal rating. **Steps**: 1. Log alert in EMS. 2. Identify alternative power flow paths via generation redispatch or switching. 3. Notify generators that a redispatch instruction may be issued within 15 minutes. 4. Run N-1 security assessment to check contingency loading."
+  },
+  {
+    "chunk_id": "887d382e",
+    "source": "operator_playbook.md",
+    "section": "Procedure LO-02: Line Loading > 100% (Emergency)",
+    "text": "**Trigger**: Any line loading > 100% of thermal rating. **Steps**: 1. Immediately redispatch generation to relieve line loading: - Reduce generation behind the overloaded line. - Increase generation in front of the overloaded line. 2. If redispatch is insufficient, open parallel paths if available. 3. If loading > 110%, prepare for possible automatic relay operation. 4. Notify line owner and document all actions in EMS."
+  },
+  {
+    "chunk_id": "d836acec",
+    "source": "operator_playbook.md",
+    "section": "Procedure LS-01: Voluntary Load Reduction",
+    "text": "**Trigger**: Spinning reserve < 50 MW or frequency < 59.7 Hz and generation at maximum. **Steps**: 1. Activate demand response contracts (notify customers via automated system). 2. Issue Emergency Conservation Advisory via public communications system. 3. Request large industrial customers (> 5 MW) to voluntarily reduce by 10%."
+  },
+  {
+    "chunk_id": "6ff12d6a",
+    "source": "operator_playbook.md",
+    "section": "Procedure LS-02: Involuntary Emergency Load Shedding",
+    "text": "**Trigger**: Frequency < 59.5 Hz and LS-01 has not restored frequency within 2 minutes. **Steps**: 1. Shed Block A (non-critical residential/commercial): up to 100 MW. 2. Wait 2 minutes; assess frequency recovery. 3. If frequency < 59.3 Hz, shed Block B (additional 100 MW). 4. Continue in 2-minute intervals until frequency recovers. 5. Never shed priority loads (hospitals, emergency services) without explicit supervisor approval. 6. Document customer numbers, MW shed, and times in EMS."
+  },
+  {
+    "chunk_id": "de718a1d",
+    "source": "operator_playbook.md",
+    "section": "Load Restoration After Shedding",
+    "text": "1. Frequency must be > 59.7 Hz and stable for > 2 minutes before restoration. 2. Restore in reverse shed order (Block B first, then Block A). 3. Restore no more than 50 MW per 5-minute interval. 4. Monitor frequency and line loading after each restoration step."
+  },
+  {
+    "chunk_id": "24c1a4b3",
+    "source": "operator_playbook.md",
+    "section": "Pre-Switching Checklist",
+    "text": "Before any switching operation: - [ ] Run security assessment with proposed topology. - [ ] Confirm all protection relays will remain correctly configured. - [ ] Verify no maintenance tags or safety grounds are in place. - [ ] Obtain approval from senior operator. - [ ] Notify affected generators and distribution operators."
+  },
+  {
+    "chunk_id": "5c1e4158",
+    "source": "operator_playbook.md",
+    "section": "Post-Switching Verification",
+    "text": "After switching: - Verify expected changes in power flow and voltage using EMS SCADA displays. - Confirm protection relay status is correct for new topology. - Log all switching operations with timestamps and operator ID."
+  },
+  {
+    "chunk_id": "3d6a0731",
+    "source": "operator_playbook.md",
+    "section": "Internal Escalation",
+    "text": "- Operator \u2192 Senior Operator: any event requiring load shedding or emergency dispatch. - Senior Operator \u2192 Control Room Supervisor: any grid emergency or UFLS activation. - Control Room Supervisor \u2192 Management: any event with customer impact > 5 minutes."
+  },
+  {
+    "chunk_id": "7f42c46c",
+    "source": "operator_playbook.md",
+    "section": "External Communication",
+    "text": "- Neighbouring control areas: mandatory notification within 5 minutes of a grid emergency. - Generator operators: direct phone or EMS messaging for all dispatch changes. - Distribution operators: notification of any transmission voltage issues. - Regulatory body: incident report within 24 hours for any UFLS activation or customer interruption."
+  }
+]
