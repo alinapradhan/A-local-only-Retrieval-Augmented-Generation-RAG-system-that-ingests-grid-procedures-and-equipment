@@ -4,6 +4,21 @@ from __future__ import annotations
 
 from rag_grid.config import config
 
+# ── Generator fleet split fractions ───────────────────────────────────────────
+# Used when estimating per-unit current output from total_gen_mw.
+# G1 (large thermal) ≈ 40 %, G2 (CCGT) ≈ 35 %, G3 (renewable) ≈ 25 %.
+GEN_FRACTION: dict[str, float] = {"G1": 0.40, "G2": 0.35, "G3": 0.25}
+GEN_FRACTION_DEFAULT: float = 1.0 / 3.0  # fallback for unknown units
+
+
+def gen_current_output_mw(target: str, total_gen_mw: float) -> float:
+    """Estimate a generator's current output from *total_gen_mw* using fleet fractions."""
+    target_upper = target.upper()
+    for key, frac in GEN_FRACTION.items():
+        if key in target_upper:
+            return total_gen_mw * frac
+    return total_gen_mw * GEN_FRACTION_DEFAULT
+
 
 # ── Frequency ──────────────────────────────────────────────────────────────────
 

@@ -83,13 +83,19 @@ class GridState:
 
 def telemetry_to_grid_state(tel: Telemetry) -> GridState:
     """Initialise a GridState from a Telemetry snapshot."""
+    from rag_grid.sim.constraints import GEN_FRACTION
+
     buses = {bid: BusState(bus_id=bid, voltage_pu=v) for bid, v in tel.bus_voltages.items()}
     lines = {lid: LineState(line_id=lid, loading_pct=p) for lid, p in tel.line_loading_pct.items()}
-    # Infer generators from total_gen_mw split across G1/G2/G3 (toy model)
+    # Infer generators from total_gen_mw using the shared fleet-fraction constants.
+    gen_max = {"G1": 300.0, "G2": 250.0, "G3": 200.0}
     generators = {
-        "G1": GeneratorState("G1", output_mw=tel.total_gen_mw * 0.4, max_mw=300.0),
-        "G2": GeneratorState("G2", output_mw=tel.total_gen_mw * 0.35, max_mw=250.0),
-        "G3": GeneratorState("G3", output_mw=tel.total_gen_mw * 0.25, max_mw=200.0),
+        gid: GeneratorState(
+            gen_id=gid,
+            output_mw=tel.total_gen_mw * frac,
+            max_mw=gen_max.get(gid, 300.0),
+        )
+        for gid, frac in GEN_FRACTION.items()
     }
     return GridState(
         frequency_hz=tel.frequency_hz,

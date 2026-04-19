@@ -13,6 +13,7 @@ from rag_grid.sim.constraints import (
     check_ramp,
     check_spinning_reserve,
     check_voltage,
+    gen_current_output_mw,
 )
 
 logger = logging.getLogger(__name__)
@@ -66,19 +67,7 @@ def evaluate_action(action: Action, telemetry: Telemetry) -> SafetyResult:
 
     # ── Dispatch / curtailment ramp-rate check ────────────────────────────────
     if action_type in ("dispatch", "curtailment"):
-        # Estimate per-generator current output from total_gen_mw using
-        # standard fleet fractions (G1≈40%, G2≈35%, G3≈25%).  This avoids
-        # comparing a single-unit setpoint against total system generation.
-        target_upper = action.target.upper()
-        if "G1" in target_upper:
-            current_gen = telemetry.total_gen_mw * 0.40
-        elif "G2" in target_upper:
-            current_gen = telemetry.total_gen_mw * 0.35
-        elif "G3" in target_upper:
-            current_gen = telemetry.total_gen_mw * 0.25
-        else:
-            # Unknown unit — assume one-third of total as a conservative guess
-            current_gen = telemetry.total_gen_mw / 3.0
+        current_gen = gen_current_output_mw(action.target, telemetry.total_gen_mw)
         violations.extend(check_ramp(current_gen, setpoint))
         if violations:
             safe_sp = _safe_dispatch_setpoint(setpoint, current_gen)
@@ -94,16 +83,7 @@ def evaluate_action(action: Action, telemetry: Telemetry) -> SafetyResult:
 
     # ── Spinning reserve check (post-dispatch estimate) ───────────────────────
     if action_type == "dispatch":
-        # Estimate current per-generator output (same fractions as ramp check).
-        target_upper = action.target.upper()
-        if "G1" in target_upper:
-            current_gen_est = telemetry.total_gen_mw * 0.40
-        elif "G2" in target_upper:
-            current_gen_est = telemetry.total_gen_mw * 0.35
-        elif "G3" in target_upper:
-            current_gen_est = telemetry.total_gen_mw * 0.25
-        else:
-            current_gen_est = telemetry.total_gen_mw / 3.0
+        current_gen_est = gen_current_output_mw(action.target, telemetry.total_gen_mw)
         delta_gen = setpoint - current_gen_est
         new_reserve = telemetry.spinning_reserve_mw - delta_gen
         violations.extend(check_spinning_reserve(new_reserve))

@@ -77,7 +77,7 @@ class Config:
         default_factory=lambda: float(os.getenv("GRID_LINE_WARN_PCT", "90.0"))
     )
     ramp_rate_mw_per_5min: float = field(
-        default_factory=lambda: float(os.getenv("GRID_RAMP_RATE_MW_PER_MIN", "50.0"))
+        default_factory=lambda: float(os.getenv("GRID_RAMP_RATE_MW_PER_5MIN", "50.0"))
     )
     max_load_shed_mw: float = field(
         default_factory=lambda: float(os.getenv("GRID_MAX_LOAD_SHED_MW", "100.0"))
