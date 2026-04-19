@@ -5,7 +5,7 @@
 This document describes security controls, operational safeguards, and known limitations of the
 RAG Grid operator copilot system.
 
----
+--- 
 
 ## Critical Safeguards
 
